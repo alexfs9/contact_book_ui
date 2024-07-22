@@ -1,3 +1,6 @@
+# Configuration
+In "contact.services.ts" you should change apiUrl's value. Default: 'http://localhost:8080/contact'.
+
 # ContactBookUi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
