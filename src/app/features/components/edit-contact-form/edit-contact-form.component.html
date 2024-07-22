@@ -1,0 +1,37 @@
+<h2 class="mb-2">Modificar contacto (id = {{ id }})</h2>
+<div class="row row-cols-3 justify-content-center mb-2">
+    <div class="d-flex flex-column">
+        <form [formGroup]="editContactform" (ngSubmit)="update()">
+            <div class="mb-3">
+                <label for="name">Nombre:</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+            <div class="mb-3">
+                <label for="email">Correo:</label>
+                <input type="text" class="form-control" id="email" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <label for="phone-number">Celular:</label>
+                <input type="text" class="form-control" id="phone-number" formControlName="phoneNumber">
+            </div>
+            <div class="d-flex justify-content-around">
+                <button type="button" class="btn btn-light" [routerLink]="['/']">
+                    Cancelar
+                </button>
+                <button class="btn btn-success">
+                    Modificar contacto
+                </button>
+            </div>
+        </form>
+        @if (message != '') {
+        <div class="alert alert-warning mt-2" role="alert">
+            {{ message }}
+        </div>
+        }
+        @if (errorMessage != '') {
+        <div class="alert alert-danger mt-2" role="alert">
+            {{ errorMessage }}
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<h2 class="mb-2">Lista de contactos</h2>
+@if (stateMessage != '') {
+<div class="alert alert-success" role="alert">
+    {{ stateMessage }}
+</div>
+}
+<div class="row mb-2">
+    <div class="col-10">
+        <input type="text" class="form-control" (input)="findContact($event)"
+            placeholder="Ingrese un nombre para buscar contacto...">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary btn-block" [routerLink]="['/new']">
+            Agregar contacto
+        </button>
+    </div>
+</div>
+<div>
+    @if (contactList.length != 0) {
+    <table class="table table-hover">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">CORREO</th>
+                <th scope="col">CELULAR</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (contact of contactList; track contact.id) {
+            <tr>
+                <td scope="row" class="align-middle fw-bold">{{ contact.id }}</td>
+                <td class="align-middle">{{ contact.name }}</td>
+                <td class="align-middle">{{ contact.email }}</td>
+                <td class="align-middle">{{ contact.phoneNumber }}</td>
+                <td class="align-middle">
+                    <div class="d-flex justify-content-evenly">
+                        <button type="button" class="btn btn-warning" [routerLink]="['/contact', contact.id]">Editar</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(contact.id)">Eliminar</button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+    @else {
+    <h3 class="text-danger">No hay contactos registrados.</h3>
+    }
+</div>
